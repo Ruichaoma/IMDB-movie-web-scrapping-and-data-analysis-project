@@ -1,0 +1,39 @@
+1：What are the strengths of your data modeling format?
+
+Ans: My strengths of data modeling format is that is very flexible and can adapt to any changes when API or webs where I scrape changed.
+Because all htmls code in web are very structured so it is convenient to scrap. Second, my data modeling format is very structured. I
+use pandas dataframe so all features and their values stored in csv file and make it very convenient to look. And my data source are
+abuandant, exceed 200 samples with 8-10 features in each data source, so there are less likely to have bias when analyze data.
+
+
+2.What are the weaknesses?(Does your data model support?  Sorting the information? Re-ordering it?  Only obtaining a certain subset of the information?)
+
+Ans: One weakness in my data modeling is have some missing data, simply just because there are no data in web I can scrape. All missing
+data are numeric values. So I use some data imputation strategies---use median to fill these missing data. Although, I have some
+irrelevent features for analysis. Like 'movie plot'. And some non-numeric feature values make re-order it difficult.
+
+3. How do you store your data on disk?
+
+Ans: I use csv to store data on disk.I write all process of web scraping and generating corresponding dataframe as function 
+and at the end of my function return dataframe, then, use my_function().to_csv('csv name.csv') to generate csv file and store
+it on disk.
+
+
+4.Let’s say you find another data source that relates to all 3 of your data sources (i.e. a data source that relates to your existing data).
+  How would you extend your model to include this new data source?  How would that change the interface?
+
+Ans: First I need to ensure for new dataset, there is same column or column with same elements so I can merge dataset with
+my previous three successfully. After that, in my main.py file, add fourth dataset information to grad_data_locally() and
+grab_data_remotely and then process data to make it standard. Finally, add data to generate new csv file to make it can join successfully by
+using same column features to merge. Overall interface format does not change too much, just add fourth dataset information and
+follow my previous three dataset generating process is ok. 
+
+5.How would you add a new attribute to your data (i.e. imagine you had a lat/long column in a database.
+  You might use that to access an API to get a city name.  How would you add city name to your data?)  
+
+Ans: In my python code of web scraping, just add new columns for new attributes in my initialized dataframe. And scraping values of
+attributes, add it into new dataframe in new attribute columns. In my python code of API, adding a new attribute is easier. Since
+I use omdb movie api, use GetMovie package can access all attributes of movies in omdb api. For instance, if I want to add new attribute
+called 'budget', use GetMovie(title=movie_list[i], api_key='6de2ae04', plot='full').get_data('Budget') can get budget for every movies, and
+add these values to new list called budget_list, create new column in my initialized dataframe 'movie budget' and add budget_list value into
+'movie budget' columns.
